@@ -199,6 +199,7 @@ function displayLoc(loc) {
     mapService.setMarker(loc)
 
     const el = document.querySelector('.selected-loc')
+    el.style.zIndex = '1'
     el.querySelector('.loc-name').innerText = loc.name
     el.querySelector('.loc-address').innerText = loc.geo.address
     el.querySelector('.loc-rate').innerHTML = '★'.repeat(loc.rate)
@@ -211,7 +212,9 @@ function displayLoc(loc) {
 
 function unDisplayLoc() {
     utilService.updateQueryParams({ locId: '' })
-    document.querySelector('.selected-loc').classList.remove('show')
+    let elSelected = document.querySelector('.selected-loc')
+    elSelected.classList.remove('show')
+    elSelected.style.zIndex = -1
     mapService.setMarker(null)
 }
 

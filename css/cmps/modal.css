@@ -1,7 +1,7 @@
 
 .modal{
     position: fixed;
-    background-color: rgb(139, 0, 139);
+    background-color: --bg3;
     top: 50%;
     left: 50%;
     translate:-50% -50%;

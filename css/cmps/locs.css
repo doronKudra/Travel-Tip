@@ -3,7 +3,7 @@
     padding: 0.5em;
     padding-bottom: 20%;
     width: 100vw;
-    
+    max-height: 85vh;
 }
 
 .loc-list {

@@ -12,8 +12,11 @@
         flex-direction: row-reverse;
     }
 
+
+
     .locs-container {
         width: 30vw;
+        overflow-y: scroll;
     }
 
     .pie {
@@ -37,12 +40,35 @@
         height: 1em;
         margin-inline-end: 0.3em;
     }
-    @media (max-width: 1000px){
+
+    @media (max-width: 1000px) {
         .pie {
-        display: inline-block;
-        width: 100px;
-        height: 100px;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
         }
-}
+
+        .loc-stats{
+            padding-top: 10px;
+        }
+    }
 }
 
+@media(min-width: 1000px) {
+    .selected-loc {
+        display: grid;
+        height: auto;
+        max-height: 4em;
+        /* padding: 0.5em; */
+        position: absolute;
+        width: 50%;
+        left: 20%;
+        z-index: 1;
+        top: 0;
+        justify-items: start;
+        padding-inline: 20px;
+        padding-bottom: 5px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+}

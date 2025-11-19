@@ -21,3 +21,15 @@
 .loc-rate {
     color: var(--color4);
 }
+
+.selected-loc {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: column;
+
+    button {
+        justify-self: end;
+        min-width: 50%;
+    }
+}

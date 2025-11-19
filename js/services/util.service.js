@@ -95,8 +95,7 @@ function getColors() {
 }
 
 function getDistance(latLng1, latLng2, unit) {
-    console.log('latLng1,latLng2:',latLng1,latLng2)
-    if ((latLng1.lat == latLng2.lat) && (latLng1.lng == latLng2.lng)) {
+    if ((latLng1.lat == latLng2.lat) && (latLng1.lng == latLng2.lng)||!latLng1||!latLng2) {
         return 0
     }
     else {

@@ -108,9 +108,9 @@ function getLocCountByLastUpdated() {
         .then(locs => {
             let today = new Date()
             today = today.getDate()
-            const locCountByLastUpdMap = locs.reduce((map, {updatedAt}) => {
+            const locCountByLastUpdMap = locs.reduce((map, {updatedAt, createdAt}) => {
 
-                if (!updatedAt) map.never++
+                if (updatedAt === createdAt) map.never++
                 else if (new Date(updatedAt).getDate() === today) map.today++
                 else map.past++
                 return map

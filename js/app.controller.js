@@ -34,7 +34,7 @@ function onInit() {
 
 function renderLocs(locs) {
     const selectedLocId = getLocIdFromQueryParams()
-
+    console.log(locs)
     var strHTML = locs.map(loc => {
         const className = (loc.id === selectedLocId) ? 'active' : ''
         return `
@@ -248,7 +248,7 @@ function onSetSortBy() {
     // const sortBy = {
     //     [prop] : (isDesc)? -1 : 1
     // }
-
+    console.log(prop)
     locService.setSortBy(sortBy)
     loadAndRenderLocs()
 }

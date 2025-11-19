@@ -6,6 +6,7 @@ window.onload = onInit
 
 // To make things easier in this project structure 
 // functions that are called from DOM are defined on a global app object
+var gUserPos
 window.app = {
     onRemoveLoc,
     onUpdateLoc,
@@ -15,10 +16,13 @@ window.app = {
     onCopyLoc,
     onShareLoc,
     onSetSortBy,
-    onSetFilterBy,
+    onSetFilterBy
 }
 
+
+
 function onInit() {
+    mapService.getUserPosition().then(res => gUserPos = res)
     getFilterByFromQueryParams()
     loadAndRenderLocs()
     mapService.initMap()
@@ -34,13 +38,14 @@ function onInit() {
 
 function renderLocs(locs) {
     const selectedLocId = getLocIdFromQueryParams()
-    console.log(locs)
     var strHTML = locs.map(loc => {
+        const distance = gUserPos?utilService.getDistance(gUserPos,loc.geo,'k'):''
         const className = (loc.id === selectedLocId) ? 'active' : ''
         return `
         <li class="loc ${className}" data-id="${loc.id}">
             <h4>  
                 <span>${loc.name}</span>
+                <span>${distance}KM</span>
                 <span title="${loc.rate} stars">${'★'.repeat(loc.rate)}</span>
             </h4>
             <p class="muted">
@@ -239,8 +244,6 @@ function getLocIdFromQueryParams() {
 function onSetSortBy() {
     const prop = document.querySelector('.sort-by').value
     const isDesc = document.querySelector('.sort-desc').checked
-    console.log('prop:',prop)
-    console.log('isDesc:',isDesc)
     if (!prop) return
 
     const sortBy = {}
@@ -319,3 +322,5 @@ function cleanStats(stats) {
     }, [])
     return cleanedStats
 }
+
+

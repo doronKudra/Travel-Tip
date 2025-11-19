@@ -34,7 +34,7 @@ function onInit() {
 
 function renderLocs(locs) {
     const selectedLocId = getLocIdFromQueryParams()
-
+    console.log(selectedLocId)
     var strHTML = locs.map(loc => {
         const className = (loc.id === selectedLocId) ? 'active' : ''
         return `
@@ -69,6 +69,7 @@ function renderLocs(locs) {
 }
 
 function onRemoveLoc(locId) {
+    if (confirm('are you sure??') === false) return
     locService.remove(locId)
         .then(() => {
             flashMsg('Location removed')
@@ -223,7 +224,7 @@ function getFilterByFromQueryParams() {
     const queryParams = new URLSearchParams(window.location.search)
     const txt = queryParams.get('txt') || ''
     const minRate = queryParams.get('minRate') || 0
-    locService.setFilterBy({txt, minRate})
+    locService.setFilterBy({ txt, minRate })
 
     document.querySelector('input[name="filter-by-txt"]').value = txt
     document.querySelector('input[name="filter-by-rate"]').value = minRate
@@ -238,7 +239,8 @@ function getLocIdFromQueryParams() {
 function onSetSortBy() {
     const prop = document.querySelector('.sort-by').value
     const isDesc = document.querySelector('.sort-desc').checked
-
+    console.log('prop:',prop)
+    console.log('isDesc:',isDesc)
     if (!prop) return
 
     const sortBy = {}

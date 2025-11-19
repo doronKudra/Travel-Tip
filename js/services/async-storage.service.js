@@ -7,6 +7,7 @@ export const storageService = {
 }
 
 function query(entityType, delay = 200) {
+    console.log('entityType:',entityType)
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }

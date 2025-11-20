@@ -6,10 +6,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Use Secret
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          check-latest: true
+
+      - name: Verify Node.js installation
         run: |
-          echo "My API Key is: ${{ secrets.API_KEY }}"
-          # You can also pass it as an environment variable to a specific step
-          # env:
-          #   MY_SECRET_VAR: ${{ secrets.API_KEY }}
-          # run: echo "My secret var is $MY_SECRET_VAR"
+          node -v
+          npm -v
+
+      - name: Run JavaScript application
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          npm install
+          node app.controller.js

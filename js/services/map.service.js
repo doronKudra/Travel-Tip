@@ -9,14 +9,7 @@ export const mapService = {
 }
 
 // TODO: Enter your API Key
-const API_KEY = process.env.API_KEY;
-
-if (mySecretKey) {
-  console.log("Got API successfully!");
-  // Use mySecretKey in your application logic
-} else {
-  console.error("API Secret Not Found");
-}
+const API_KEY = AIzaSyAsP1qn92sD74u1A7XBQ3dn65wl8C45BE0
 
 var gMap
 var gMarker

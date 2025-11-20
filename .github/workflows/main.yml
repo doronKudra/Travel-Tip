@@ -1,0 +1,15 @@
+name: My Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Secret
+        run: |
+          echo "My API Key is: ${{ secrets.API_KEY }}"
+          # You can also pass it as an environment variable to a specific step
+          # env:
+          #   MY_SECRET_VAR: ${{ secrets.API_KEY }}
+          # run: echo "My secret var is $MY_SECRET_VAR"

@@ -11,9 +11,9 @@ export const mapService = {
 // TODO: Enter your API Key
 const API_KEY = process.env.API_KEY;
 
-if (mySecretKey) {
+if (API_KEY) {
   console.log("Got API successfully!");
-  // Use mySecretKey in your application logic
+
 } else {
   console.error("API Secret Not Found");
 }
